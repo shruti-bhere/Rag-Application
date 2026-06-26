@@ -195,3 +195,9 @@ async def ask(body: AskBody):
             "X-Accel-Buffering": "no",
         },
     )
+
+
+# ✅ THIS MUST BE AT VERY END
+@app.get("/")
+async def root():
+    return {"status": "RAG API running"}
