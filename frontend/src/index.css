@@ -1,0 +1,84 @@
+:root {
+  --bg-dark: #000000;
+  --bg-card: #111113;
+  --bg-elevated: #18181b;
+  --border: #27272a;
+  --green-primary: #22c55e;
+  --green-dim: #16a34a;
+  --green-glow: rgba(34, 197, 94, 0.25);
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --radius: 12px;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--bg-dark);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle animated grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-pan 18s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes grid-pan {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 24px 24px, 24px 24px;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+  }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-elevated);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-primary);
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green-dim);
+}
